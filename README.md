@@ -1,6 +1,6 @@
 # Family
 
-Family is extension for your models to simply query relationships on Arrays of your models.
+Family is extension for your models to simply "pre-fetch" relationships on Arrays of your models.
 
 ## Example
 
