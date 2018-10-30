@@ -60,18 +60,12 @@ extension Video: PostgreSQLMigration {
                                        // for all videos and store them in inidividual models in the 
                                        // relationshipCache property defined in the Video model
             .map { videos in
-                return videos.compactMap { video in
-                    do {
-                        let language = try video.relationship(\.language) // <=== This is the way you access 
+                return videos.map { video in
+                    let language = try video.relationship(\.language) // <=== This is the way you access 
                                                                           // the prefetched relationship on individual models
 
-                        // assigning the language code
-                        let context = Video.OutputContext(languageCode: language.code)
-                        return try video.output(context: context)
-                    } catch {
-                        print("Error creating Video.Output: \(error)")
-                        return nil
-                    }
+                    let context = Video.OutputContext(languageCode: language.code)
+                    return try video.output(context: context)
                 }
             }
     }
