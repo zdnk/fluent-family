@@ -47,6 +47,11 @@ extension Video: PostgreSQLMigration {
 
 **VideoController.swift**
 ```swift
+import Vapor
+import Family
+
+struct VideoController {
+
     func show(_ req: Request) throws -> Future<[Video.Output]> {
         let campaign = try req.parameters.next(Campaign.self)
         
@@ -69,4 +74,6 @@ extension Video: PostgreSQLMigration {
                 }
             }
     }
+    
+}
 ```
