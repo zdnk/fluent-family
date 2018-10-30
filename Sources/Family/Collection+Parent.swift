@@ -1,4 +1,3 @@
-import Vapor
 import Fluent
 
 extension Collection where Element: RelationshipFetching & Model, Element.ID: Hashable {
@@ -25,7 +24,7 @@ extension Collection where Element: RelationshipFetching & Model, Element.ID: Ha
                 }
                 
                 guard let parent = optionalParent else {
-                    throw Abort(.notFound)
+                    throw NotFound()
                 }
                 
                 elements[index].relationshipCache.set(keyPath, to: parent)

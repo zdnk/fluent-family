@@ -1,5 +1,5 @@
-import Vapor
 import Fluent
+import Async
 
 extension Collection where Element: RelationshipFetching & Model, Element.ID: Hashable {
     
@@ -26,7 +26,7 @@ extension Collection where Element: RelationshipFetching & Model, Element.ID: Ha
                 .all()
         }
         
-        return Vapor.map(mappings, siblings) { (pivots, siblings) -> ([Element]) in
+        return Async.map(mappings, siblings) { (pivots, siblings) -> ([Element]) in
             var elements = Array(self)
             let grouped = [Element.ID: [P]](grouping: pivots, by: { $0[keyPath: P.leftIDKey] })
             

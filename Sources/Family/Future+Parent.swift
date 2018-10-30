@@ -1,4 +1,3 @@
-import Vapor
 import Fluent
 
 extension Future where T: Collection, T.Element: Model & RelationshipFetching, T.Element.ID: Hashable {

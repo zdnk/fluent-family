@@ -1,5 +1,5 @@
 import Foundation
-import Vapor
+import Service
 
 public typealias RelationshipCache = Extend
 
