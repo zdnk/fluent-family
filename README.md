@@ -62,7 +62,7 @@ extension Video: PostgreSQLMigration {
             .map { videos in
                 return videos.map { video in
                     let language = try video.relationship(\.language) // <=== This is the way you access 
-                                                                          // the prefetched relationship on individual models
+                                                                      // the prefetched relationship on individual models
 
                     let context = Video.OutputContext(languageCode: language.code)
                     return try video.output(context: context)
